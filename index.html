@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MO Marketplace – Home redesign</title>
+<title>MO Marketplace – Mobile home redesign</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
@@ -110,14 +110,9 @@ button{font:inherit;color:inherit;cursor:pointer}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
 .c{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}.c p{margin:4px 0;color:var(--mut);font-size:13px}.c p b{color:var(--ink)}
 .ol{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:6px 20px}.ol div{padding:12px 0;border-bottom:1px solid var(--line)}.ol div:last-child{border:0}.ol b{display:block}
-@media (max-width:480px){.phone{border-width:0;border-radius:0}}
+@media (max-width:480px){.pane{padding:0}.phone{border-width:0;border-radius:0;height:100dvh;max-width:none}.scr{height:100dvh}.note{display:none}}
 @media (prefers-reduced-motion:reduce){.scr{scroll-behavior:auto}}
 </style></head><body>
-<div class="top" role="tablist"><b>MO Marketplace · Home redesign</b>
-<button class="tab" role="tab" aria-selected="true" data-t="m">Mobile app</button>
-<button class="tab" role="tab" aria-selected="false" data-t="w">Web 1440</button>
-</div>
-
 <div class="pane on" id="m"><div class="phonewrap"><div class="phone">
 <div class="scr" id="scr">
 <div class="hd"><div><h2>Good afternoon, Anika</h2><small>📍 Delivering to Colombo 05 ▾</small></div><div class="ic">🔔</div></div>
@@ -138,24 +133,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 </div></div>
 <p style="text-align:center;color:var(--mut);font-size:12px;margin-top:12px">Prototype: scroll the screen, tap the chips or category tiles to jump, watch the promo rotate.</p></div>
 
-<div class="pane" id="w"><div class="webwrap" id="ww"><div class="web" id="web">
-<div class="wh"><span class="logo">MO</span><span style="color:var(--mut);font-size:13px">📍 Colombo 05 ▾</span>
-<div class="wsearch"><span>All of MO ▾</span><span>Search brands, bikes, houses, anything…</span><button>Search</button></div>
-<span style="color:var(--mut)">EN ▾</span><span>♡</span><span>💬</span><button class="wbtn">Sign in</button><button class="wbtn r">＋ Sell</button></div>
-<div class="wn" id="wn"></div>
-<div class="wb">
-<div class="hero"><div class="big"><small>Super Mall · Ends in <span class="timer" id="tm2">08:15:15</span></small><h1>Up to 50% off<br>top brands</h1><div style="opacity:.9">Official stores. Genuine products. Island-wide delivery.</div><button>Shop the sale</button><u>🛍️</u></div>
-<div class="side"><div style="background:var(--sh)"><h3>Thrift finds under Rs 2,000</h3><small>Quality checked by MO</small><u>👗</u></div><div style="background:var(--veh)"><h3>Car & bike accessories</h3><small>Dash cams, helmets, care kits</small><u>🏍️</u></div></div></div>
-<div class="wd" id="wd"></div>
-<div class="wt"><span>🛡️ Buyer protection</span><span>✅ Verified sellers</span><span>💵 Cash on delivery</span><span>💬 Chat or WhatsApp</span><span>🚚 Island-wide delivery</span></div>
-<div class="ws"><div class="sh"><span class="tag" style="background:var(--mallT)">Super Mall</span><h3>Flash sale</h3><a>See all</a></div><div class="g6" id="w-flash"></div></div>
-<div class="ws"><div class="sh"><span class="tag" style="background:var(--shT);color:var(--sh)">Second Hand</span><h3>Fresh pre-loved finds</h3><a>See all</a></div><div class="g6" id="w-sh"></div></div>
-<div class="ws"><div class="sh"><span class="tag" style="background:var(--vehT);color:var(--veh)">Vehicles</span><h3>Vehicle accessories</h3><a>See all</a></div><div class="wv"><div class="fil"><b>Type</b><span class="pill">Dash cams</span><span class="pill">Car care</span><span class="pill">Bike gear</span><span class="pill">Tools</span><b style="margin-top:10px">Budget</b><span class="pill">Under Rs 1,000</span><span class="pill">Under Rs 5,000</span><span class="pill">Under Rs 10,000</span><b style="margin-top:10px">Fits</b><span class="pill">Cars</span><span class="pill">Bikes</span><span class="pill">Three-wheelers</span></div><div class="g3" id="w-veh"></div></div></div>
-<div class="ws"><div class="sh"><span class="tag" style="background:var(--propT);color:var(--prop)">Properties</span><h3>Property essentials</h3><a>See all</a></div><div class="g4" id="w-prop"></div></div>
-<div class="ws"><div class="sh"><h3>Official stores</h3></div><div class="stores" id="w-st" style="padding:0;gap:28px"></div></div>
-<div class="ws"><div class="sh"><h3>Shop by budget</h3></div><div class="bud" style="padding:0;max-width:700px"><button>Under<b>Rs 999</b></button><button>Under<b>Rs 1,999</b></button><button>Under<b>Rs 2,999</b></button><button>Under<b>Rs 4,999</b></button></div></div>
-</div><div class="foot"><div class="ft1"><div><div class="lg">MO</div><p>Sri Lanka's marketplace for brand-new, pre-loved, vehicle and home accessories.</p><div class="soc"><span>f</span><span>ig</span><span>tt</span><span>yt</span></div><div class="app"><span>App Store</span><span>Google Play</span></div></div><div><h4>Shop</h4><a>Super Mall</a><a>Second Hand</a><a>Vehicle accessories</a><a>Property essentials</a><a>Flash sale</a><a>New arrivals</a></div><div><h4>Help</h4><a>Help centre</a><a>Delivery &amp; shipping</a><a>Refund policy</a><a>Safety tips</a><a>Report a listing</a></div><div><h4>Company</h4><a>About MO</a><a>Sell on MO</a><a>Official store partners</a><a>Privacy policy</a><a>Terms of use</a></div><div class="ct"><h4>Contact us</h4><div class="ph">0777 748 300</div><div>WhatsApp and calls, daily</div><div><em>[Support email]</em></div><div><em>[Registered office address], Sri Lanka</em></div></div></div><div class="pay"><span class="l">We accept</span><span><b style="font:italic 800 16px Poppins,sans-serif;color:#1a1f71;letter-spacing:-.5px">VISA</b></span><span><svg aria-hidden="true" width="26" height="16" viewBox="0 0 26 16"><circle cx="8" cy="8" r="8" fill="#eb001b"/><circle cx="18" cy="8" r="8" fill="#f79e1b" fill-opacity=".9"/></svg>Mastercard</span><span><svg aria-hidden="true" width="20" height="16" viewBox="0 0 20 16" fill="none" stroke="#12906a" stroke-width="1.6" stroke-linecap="round"><rect x="1" y="2" width="18" height="12" rx="2"/><circle cx="10" cy="8" r="2.5"/><path d="M4.5 5h.01M15.5 11h.01"/></svg>Cash on delivery</span><span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#2563c9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l7-4 7 4M3 7h12M4.5 8.5v4.5M9 8.5v4.5M13.5 8.5v4.5M2 15.5h14"/></svg>Bank transfer</span><span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#d98c10" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="7"/><path d="M9 5v4l2.5 1.5"/></svg>Pay later</span><span class="s">🔒 Secure checkout</span></div><div class="fb"><span>© 2026 MO Marketplace. All rights reserved.</span><div><span>English</span><span>සිංහල</span><span>தமிழ்</span></div></div></div></div></div></div>
-
 <script>
 const W=[{k:'mall',n:'Super Mall',c:'var(--mall)',d:'Brand new from official stores',s:'Official brands',e:'🛍️'},{k:'sh',n:'Second Hand',c:'var(--sh)',d:'Pre-loved finds at fair prices',s:'Quality checked',e:'👗'},{k:'veh',n:'Vehicles',c:'var(--veh)',d:'Car and bike accessories',s:'Fits your model',e:'🔧'},{k:'prop',n:'Properties',c:'var(--prop)',d:'Fixtures, security and home upgrades',s:'Home & garden',e:'🛠️'}];
 const $=s=>document.querySelector(s),H=(el,h)=>$(el).innerHTML=h;
@@ -169,19 +146,15 @@ const veh=f=>`<div class="vc"><div class="im">${f[0]}</div><div class="t"><b>${f
 const prop=f=>`<div class="pr"><div class="im">${f[0]}</div><div><b>${f[1]}</b><small style="display:block;color:var(--mut)">${f[2]}</small><b style="color:var(--prop)">Rs ${f[3]}</b><br><span class="pill" style="font-size:11px;padding:1px 8px">${f[4]}</span></div></div>`;
 H('#chips','<button class="chip on" data-j="top">For you</button>'+W.map(w=>`<button class="chip" data-j="s-${w.k}"><i style="background:${w.c}"></i>${w.n}</button>`).join(''));
 const door=w=>`<button class="door" data-j="s-${w.k}" style="background:${w.c}"><b>${w.n}</b><span>${w.d}</span><em>${w.s}</em><u>${w.e}</u></button>`;
-H('#doors',W.map(door).join(''));H('#wd',W.map(door).join(''));
-H('#wn',W.map(w=>`<a style="color:var(--ink)"><i style="background:${w.c}"></i>${w.n}</a>`).join('')+'<span class="rt" style="padding:12px 0">Sell · Help · Safety tips</span>');
+H('#doors',W.map(door).join(''));
 H('#r-flash',F.slice(0,4).map(f=>flash(f)).join(''));H('#r-sh',S.slice(0,4).map(f=>sh(f)).join(''));H('#r-veh',V.map(veh).join(''));H('#r-prop',P.slice(0,2).map(prop).join(''));
-H('#w-flash',F.map(f=>flash(f,1)).join(''));H('#w-sh',S.map(f=>sh(f,1)).join(''));H('#w-veh',V.map(veh).join(''));
-H('#w-prop',P.map(p=>`<div class="vc" style="width:auto"><div class="im" style="background:var(--propT);height:120px">${p[0]}</div><div class="t"><b>${p[1]}</b><br><small>${p[2]}</small><br><b style="color:var(--prop)">Rs ${p[3]}</b></div></div>`).join(''));
 const st=['Samsung','Daraz','Singer','Abans','Softlogic','Cargills','Odel'];
-const stH=st.map(s=>`<div><i>🏬</i>${s}</div>`).join('');H('#stores',stH);H('#w-st',stH);
+const stH=st.map(s=>`<div><i>🏬</i>${s}</div>`).join('');H('#stores',stH);
 const pr=[['Super Mall','Up to 50% off','Top brands, official stores','linear-gradient(120deg,#2a1130,#e5383b)','🛍️'],['Second Hand','Thrift under Rs 2,000','Quality checked by MO','linear-gradient(120deg,#0b6b50,#12906a)','👗'],['Vehicles','Dash cams from Rs 6,500','Car and bike accessories','linear-gradient(120deg,#1a4aa0,#2563c9)','🏍️']];
 let pi=0;const rp=()=>{const p=pr[pi];H('#promo',`<small>${p[0]}</small><h3>${p[1]}</h3><p>${p[2]}</p><button>Shop now</button><u>${p[4]}</u><div class="dots">${pr.map((_,i)=>`<i class="${i==pi?'on':''}"></i>`).join('')}</div>`);$('#promo').style.background=p[3]};
 rp();setInterval(()=>{pi=(pi+1)%pr.length;rp()},3500);
-let t=8*3600+15*60+15;setInterval(()=>{t=t>0?t-1:0;const s=[t/3600|0,t/60%60|0,t%60].map(x=>String(x).padStart(2,'0')).join(':');$('#tm').textContent=s;$('#tm2').textContent=s},1000);
+let t=8*3600+15*60+15;setInterval(()=>{t=t>0?t-1:0;const s=[t/3600|0,t/60%60|0,t%60].map(x=>String(x).padStart(2,'0')).join(':');$('#tm').textContent=s},1000);
 const scr=$('#scr');document.addEventListener('click',e=>{const b=e.target.closest('[data-j]');if(b){const id=b.dataset.j;scr.scrollTo({top:id=='top'?0:$('#'+id).offsetTop-70});document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.j==id))}
-const tb=e.target.closest('.tab');if(tb){document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x==tb));document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id==tb.dataset.t));fit()}});
-function fit(){const c=$('#ww'),w=$('#web');if(!c.offsetWidth)return;const k=Math.min(1,(c.offsetWidth)/1440);w.style.transform=`scale(${k})`;c.style.height=w.offsetHeight*k+'px'}
-addEventListener('resize',fit);document.addEventListener('click',e=>{const a=e.target.closest('.atc');if(a){const on=a.classList.toggle('on');a.textContent=on?'✓ Added to cart':'Add to cart'}});
+});
+document.addEventListener('click',e=>{const a=e.target.closest('.atc');if(a){const on=a.classList.toggle('on');a.textContent=on?'✓ Added to cart':'Add to cart'}});
 </script></body></html>
