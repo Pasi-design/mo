@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MO Marketplace – Mobile home redesign</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f4f5f8;--card:#fff;--ink:#14172b;--mut:#6b7088;--line:#e4e6ee;--red:#e5383b;--mall:#1a1f3c;--sh:#12906a;--veh:#2563c9;--prop:#d98c10;--shT:#e6f4ef;--vehT:#e8effc;--propT:#fcf1dc;--mallT:#e9eaf2}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1120;--card:#1a1d33;--ink:#f1f2f8;--mut:#a0a5c0;--line:#2b2f4d;--mall:#3a4290;--shT:#173a31;--vehT:#1a2a4d;--propT:#43330f;--mallT:#23274a}}
+:root[data-theme="dark"]{--bg:#0f1120;--card:#1a1d33;--ink:#f1f2f8;--mut:#a0a5c0;--line:#2b2f4d;--mall:#3a4290;--shT:#173a31;--vehT:#1a2a4d;--propT:#43330f;--mallT:#23274a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:400 14px/1.45 Poppins,system-ui,sans-serif}
+button{font:inherit;color:inherit;cursor:pointer}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--card);border-bottom:1px solid var(--line);display:flex;gap:6px;padding:10px 16px;align-items:center;flex-wrap:wrap}
+.top b{margin-right:auto;font-size:16px}
+.tab{border:1px solid var(--line);background:transparent;padding:6px 14px;border-radius:99px;font-weight:500}
+.tab[aria-selected=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pane{display:none;padding:20px 16px 60px}.pane.on{display:block}
+.phonewrap{display:flex;justify-content:center}
+.phone{width:390px;max-width:100%;background:var(--bg);border-radius:36px;border:8px solid #14172b;overflow:hidden;position:relative}
+.scr{height:760px;overflow-y:auto;scroll-behavior:smooth;padding-bottom:84px}
+.scr::-webkit-scrollbar{display:none}
+.m{padding:0 16px}
+.hd{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 6px}
+.hd h2{margin:0;font-size:19px;font-weight:700}.hd small{color:var(--mut);font-size:12px}
+.ic{width:38px;height:38px;border-radius:12px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center}
+.sticky{position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 16px 8px}
+.search{display:flex;gap:8px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 14px;color:var(--mut);font-size:13px}
+.search span:last-child{margin-left:auto}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-top:8px;scrollbar-width:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--card);border-radius:99px;padding:5px 12px;font-size:12.5px;font-weight:500;display:flex;gap:6px;align-items:center}
+.chip i{width:8px;height:8px;border-radius:50%}
+.chip.on{background:var(--ink);color:var(--bg)}
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:8px 16px}
+.door{border:0;text-align:left;border-radius:20px;padding:14px;color:#fff;min-height:112px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.door b{font-size:16px}.door span{font-size:11.5px;opacity:.9;margin-top:2px;max-width:120px}
+.door em{font-style:normal;margin-top:auto;font-size:11px;background:rgba(255,255,255,.2);border-radius:99px;padding:2px 9px;align-self:flex-start}
+.door u{position:absolute;right:6px;bottom:2px;font-size:44px;opacity:.35;text-decoration:none}
+.promo{margin:8px 16px;border-radius:20px;padding:16px;min-height:132px;position:relative;overflow:hidden;color:#fff;transition:background .4s}
+.promo small{opacity:.85}.promo h3{margin:2px 0;font-size:22px}.promo p{margin:0;font-size:12px;opacity:.9}
+.promo button{margin-top:10px;border:0;background:#fff;color:#14172b;border-radius:99px;padding:7px 14px;font-weight:600;font-size:12px}
+.promo u{position:absolute;right:14px;top:18px;font-size:64px;text-decoration:none}
+.dots{position:absolute;right:14px;bottom:12px;display:flex;gap:4px}.dots i{width:6px;height:6px;border-radius:9px;background:#fff6}.dots i.on{width:18px;background:#fff}
+.trust{display:flex;gap:6px;overflow-x:auto;padding:4px 16px;scrollbar-width:none}
+.trust span{flex:none;font-size:11px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:4px 10px}
+.sec{padding:18px 0 0}
+.sh{display:flex;align-items:center;gap:8px;padding:0 16px 8px}
+.sh h3{margin:0;font-size:16px;font-weight:700}
+.sh a{margin-left:auto;font-size:12px;color:var(--mut);cursor:pointer}
+.tag{font-size:11px;font-weight:600;padding:2px 9px;border-radius:99px}
+.timer{background:var(--red);color:#fff;font-weight:600;font-size:12px;padding:2px 8px;border-radius:8px;font-variant-numeric:tabular-nums}
+.row{display:flex;gap:10px;overflow-x:auto;padding:0 16px;scrollbar-width:none}
+.pc{flex:none;width:118px}
+.pc .im,.wp .im{height:118px;border-radius:14px;display:grid;place-items:center;font-size:44px;position:relative}
+.pc .im s,.wp .im s{position:absolute;left:6px;top:6px;text-decoration:none;font-size:10.5px;font-weight:600;border-radius:7px;padding:1px 7px;background:var(--card)}
+.pc .im .heart,.wp .im .heart{left:auto;right:6px;font-size:12px;padding:2px 5px;border-radius:50%}
+.pc p,.wp p{margin:4px 0 0;font-size:12px}.pc b,.wp b{font-size:13px}
+.pc small,.wp small{color:var(--mut);font-size:11px;display:block}.old{text-decoration:line-through;color:var(--mut);font-weight:400;font-size:11px}
+.stk{font-size:11px;color:var(--red);font-weight:600}
+.pill{flex:none;font-size:12px;border:1px solid var(--line);background:var(--card);border-radius:99px;padding:4px 12px}
+.vc{flex:none;width:200px;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.vc .im{height:96px;background:var(--vehT);display:grid;place-items:center;font-size:44px}
+.vc div.t{padding:10px}.vc small{color:var(--mut)}
+.pr{margin:0 16px;background:var(--card);border:1px solid var(--line);border-radius:16px;display:flex;gap:12px;padding:10px;margin-bottom:8px}
+.pr .im{width:82px;height:82px;border-radius:12px;background:var(--propT);display:grid;place-items:center;font-size:36px;flex:none}
+.stores{display:flex;gap:14px;overflow-x:auto;padding:0 16px}.stores div{flex:none;text-align:center;font-size:11px;width:60px}
+.stores i{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--mallT);font-size:24px;font-style:normal;margin-bottom:3px}
+.bud{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 16px}
+.bud button{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:8px 2px;font-size:11px;color:var(--mut)}
+.bud b{display:block;color:var(--ink);font-size:12.5px}
+.nav{position:absolute;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);display:flex;justify-content:space-around;align-items:flex-end;padding:8px 6px 12px;font-size:10.5px;color:var(--mut)}
+.nav div{text-align:center;width:20%}.nav div.a{color:var(--red);font-weight:600}.nav .g{font-size:18px;display:block}
+.nav .sell{background:var(--red);color:#fff;border-radius:18px;padding:8px 0;margin-top:-26px;box-shadow:0 6px 14px #e5383b55;font-weight:600}
+/* web */
+.webwrap{overflow:hidden}
+.web{width:1440px;transform-origin:0 0;background:var(--bg);border:1px solid var(--line)}
+.wh{background:var(--card);border-bottom:1px solid var(--line);padding:14px 56px;display:flex;gap:24px;align-items:center}
+.logo{font-weight:700;font-size:26px;color:var(--red);letter-spacing:-1px}
+.wsearch{flex:1;display:flex;border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg)}
+.wsearch span{padding:11px 16px;color:var(--mut)}.wsearch span:first-child{border-right:1px solid var(--line);color:var(--ink);font-weight:500}.wsearch span:nth-child(2){flex:1}
+.wsearch button{border:0;background:var(--red);color:#fff;padding:0 26px;font-weight:600}
+.wbtn{border:1.5px solid var(--ink);background:transparent;border-radius:12px;padding:9px 18px;font-weight:600}.wbtn.r{background:var(--red);border-color:var(--red);color:#fff}
+.wn{background:var(--card);display:flex;gap:6px;padding:0 56px;border-bottom:1px solid var(--line)}
+.wn a{padding:12px 18px;font-weight:600;border-bottom:3px solid transparent;display:flex;gap:8px;align-items:center;cursor:pointer}
+.wn a i{width:10px;height:10px;border-radius:50%}.wn a:hover{border-color:currentColor}
+.wn .rt{margin-left:auto;font-weight:400;color:var(--mut);font-size:13px}
+.wb{padding:28px 56px 40px}
+.hero{display:grid;grid-template-columns:2fr 1fr;gap:16px;height:330px}
+.hero .big{border-radius:24px;background:linear-gradient(120deg,#2a1130,#e5383b);color:#fff;padding:40px;position:relative;overflow:hidden}
+.hero .big h1{font-size:52px;line-height:1.05;margin:6px 0 10px;letter-spacing:-1.5px}.hero .big u{position:absolute;right:50px;top:60px;font-size:170px;text-decoration:none}
+.hero .big button{border:0;background:#fff;color:#14172b;border-radius:99px;padding:11px 24px;font-weight:600;margin-top:12px}
+.side{display:grid;gap:16px}.side div{border-radius:24px;padding:22px;color:#fff;position:relative;overflow:hidden}.side h3{margin:0;font-size:22px}.side u{position:absolute;right:16px;bottom:6px;font-size:56px;opacity:.4;text-decoration:none}
+.wd{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:20px 0 6px}
+.wd .door{min-height:150px;padding:20px;cursor:pointer}.wd .door b{font-size:21px}.wd .door span{max-width:200px;font-size:13px}.wd .door u{font-size:68px}
+.wt{display:flex;gap:28px;justify-content:center;padding:14px 0;color:var(--mut);font-size:13px}
+.ws{margin-top:30px}.ws .sh{padding:0 0 12px}.ws .sh h3{font-size:24px}
+.g6{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}.wp .im{height:170px;font-size:60px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.wv{display:grid;grid-template-columns:240px 1fr;gap:20px}
+.fil{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px}.fil b{display:block;margin-bottom:8px}
+.fil .pill{display:inline-block;margin:0 4px 6px 0}
+.wv .vc,.g3 .vc{width:auto}.wv .vc .im{height:150px}.wv .g3{align-items:start}.fil{align-self:start}.wv .vc .t{padding:14px}.atc{display:block;width:100%;margin-top:12px;border:1.5px solid var(--ink);background:transparent;border-radius:10px;padding:8px;font-weight:600;font-size:12.5px}.atc.on{background:var(--ink);color:var(--bg)}
+.map{background:var(--propT);border-radius:20px;display:grid;place-items:center;font-size:60px;border:1px solid var(--line);min-height:120px}
+.foot{margin-top:48px;background:#0c0c0d;color:#fff;padding:56px 56px 26px}.foot .ft1{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1.5fr;gap:40px}.foot .lg{font-size:36px;font-weight:700;letter-spacing:-1.5px;color:var(--red);line-height:1}.foot p{color:#a3a6b5;font-size:13px;margin:12px 0 16px;max-width:290px}.foot h4{margin:0 0 12px;font-size:14px;font-weight:600}.foot a{display:block;color:#a3a6b5;font-size:13px;padding:4px 0}.foot a:hover{color:#fff}.foot .soc,.foot .app{display:flex;gap:8px}.foot .soc span{width:36px;height:36px;border-radius:50%;border:1px solid #3a3b44;display:grid;place-items:center;font-size:12px;font-weight:600}.foot .app{margin-top:16px}.foot .app span{border:1px solid #3a3b44;border-radius:10px;padding:7px 12px;font-size:12px}.foot .ct div{color:#a3a6b5;font-size:13px;padding:4px 0}.foot .ct .ph{color:#fff;font-size:20px;font-weight:600;padding:0 0 4px}.foot .ct em{color:#7d8099;font-style:normal}.foot .pay{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:40px;padding:22px 0;border-top:1px solid #26272f;border-bottom:1px solid #26272f}.foot .pay span{background:#fff;color:#14172b;border-radius:8px;padding:0 12px;height:36px;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600}.foot .pay .l{background:none;color:#a3a6b5;padding:0;margin-right:6px;font-weight:500}.foot .pay .s{margin-left:auto;background:none;color:#a3a6b5;font-weight:500}.foot .fb{display:flex;justify-content:space-between;color:#7d8099;font-size:12px;padding-top:20px}.foot .fb div{display:flex;gap:20px}
+/* docs */
+.doc{max-width:960px;margin:0 auto}.doc h2{font-size:24px;margin:28px 0 8px}.doc h3{font-size:16px;margin:0 0 4px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}.c p{margin:4px 0;color:var(--mut);font-size:13px}.c p b{color:var(--ink)}
+.ol{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:6px 20px}.ol div{padding:12px 0;border-bottom:1px solid var(--line)}.ol div:last-child{border:0}.ol b{display:block}
+@media (max-width:480px){.pane{padding:0}.phone{border-width:0;border-radius:0;height:100dvh;max-width:none}.scr{height:100dvh}.note{display:none}}
+@media (prefers-reduced-motion:reduce){.scr{scroll-behavior:auto}}
+</style></head><body>
+<div class="pane on" id="m"><div class="phonewrap"><div class="phone">
+<div class="scr" id="scr">
+<div class="hd"><div><h2>Good afternoon, Anika</h2><small>📍 Delivering to Colombo 05 ▾</small></div><div class="ic">🔔</div></div>
+<div class="sticky"><div class="search">🔍 <span>Search across MO</span><span>📷</span></div>
+<div class="chips" id="chips"></div></div>
+<div class="doors" id="doors"></div>
+<div class="promo" id="promo"></div>
+<div class="trust"><span>🛡️ Buyer protection</span><span>✅ Verified sellers</span><span>💵 Cash on delivery</span><span>💬 Chat or WhatsApp</span></div>
+
+<div class="sec" id="s-mall"><div class="sh"><span class="tag" style="background:var(--mallT)">Super Mall</span><h3>Flash sale</h3><span class="timer" id="tm">08:15:15</span><a>See all</a></div><div class="row" id="r-flash"></div></div>
+<div class="sec" id="s-sh"><div class="sh"><span class="tag" style="background:var(--shT);color:var(--sh)">Second Hand</span><h3>Fresh near you</h3><a>See all</a></div><div class="row" style="padding-bottom:8px"><span class="pill">Fashion</span><span class="pill">Phones</span><span class="pill">Home</span><span class="pill">Under Rs 2,000</span></div><div class="row" id="r-sh"></div></div>
+<div class="sec" id="s-veh"><div class="sh"><span class="tag" style="background:var(--vehT);color:var(--veh)">Vehicles</span><h3>Vehicle accessories</h3><a>See all</a></div><div class="row" style="padding-bottom:8px"><span class="pill">Dash cams</span><span class="pill">Car care</span><span class="pill">Bike gear</span><span class="pill">Tools</span></div><div class="row" id="r-veh"></div></div>
+<div class="sec" id="s-prop"><div class="sh"><span class="tag" style="background:var(--propT);color:var(--prop)">Properties</span><h3>Property essentials</h3><a>See all</a></div><div class="row" style="padding-bottom:8px"><span class="pill">Security</span><span class="pill">Lighting</span><span class="pill">Garden</span><span class="pill">Tools</span></div><div id="r-prop"></div></div>
+<div class="sec"><div class="sh"><h3>Official stores</h3><a>See all</a></div><div class="stores" id="stores"></div></div>
+<div class="sec"><div class="sh"><h3>Shop by budget</h3></div><div class="bud"><button>Under<b>Rs 999</b></button><button>Under<b>Rs 1,999</b></button><button>Under<b>Rs 2,999</b></button><button>Under<b>Rs 4,999</b></button></div></div>
+</div>
+<div class="nav"><div class="a"><span class="g">🏠</span>Home</div><div><span class="g">🔎</span>Browse</div><div class="sell"><span class="g">＋</span>Sell</div><div><span class="g">💬</span>Chats</div><div><span class="g">👤</span>Account</div></div>
+</div></div>
+<p style="text-align:center;color:var(--mut);font-size:12px;margin-top:12px">Prototype: scroll the screen, tap the chips or category tiles to jump, watch the promo rotate.</p></div>
+
+<script>
+const W=[{k:'mall',n:'Super Mall',c:'var(--mall)',d:'Brand new from official stores',s:'Official brands',e:'🛍️'},{k:'sh',n:'Second Hand',c:'var(--sh)',d:'Pre-loved finds at fair prices',s:'Quality checked',e:'👗'},{k:'veh',n:'Vehicles',c:'var(--veh)',d:'Car and bike accessories',s:'Fits your model',e:'🔧'},{k:'prop',n:'Properties',c:'var(--prop)',d:'Fixtures, security and home upgrades',s:'Home & garden',e:'🛠️'}];
+const $=s=>document.querySelector(s),H=(el,h)=>$(el).innerHTML=h;
+const F=[['🧢','Cotton cap','500','800','-35%','Low stock','var(--mallT)'],['👗',"Women's dress",'1,000','3,500','-71%','1 left','#fbeede'],['🧱','Ceramic tile set','1,000','2,500','-60%','5 left','#eeebe6'],['🎧','Wireless earbuds','2,490','4,990','-50%','12 left','var(--mallT)'],['👟','Sneakers','3,900','6,500','-40%','8 left','#fbeede'],['⌚','Smart watch','4,500','9,000','-50%','Low stock','#eeebe6']];
+const S=[['🎒','Leather backpack','3,200','Like new','Kandy','4.8'],['💻','MacBook Air 2020','165,000','Gently used','Nugegoda','4.9'],['👠','Ladies heels, size 6','1,800','Good','Galle','4.6'],['📷','Canon DSLR','78,000','Like new','Negombo','4.7'],['🪑','Teak chair','12,500','Good','Colombo','4.5'],['📱','iPhone 11','92,000','Gently used','Kandy','4.8']];
+const V=[['📹','70mai dash cam A810','4K · Night vision','Cars','28,500'],['🪖','Full-face helmet','ISI certified','Bikes','4,200'],['🧰','10-pc spanner set','Repair kit','Cars','3,450']];
+const P=[['🔐','Smart door lock','Home security · Easy install','12,500','Free shipping'],['💡','LED solar wall lights','Outdoor · Waterproof','999','On sale'],['📹','Wi-Fi CCTV camera','Security · 2-way audio','7,900','Night vision'],['🪴','Garden tool set','Home & garden','2,800','Rust-proof']];
+const flash=(f,w)=>`<div class="${w?'wp':'pc'}"><div class="im" style="background:${f[6]}">${f[0]}<s style="color:var(--red)">${f[4]}</s></div><p>${f[1]}</p><b>Rs ${f[2]}</b> <span class="old">Rs ${f[3]}</span><small class="stk">${f[5]}</small></div>`;
+const sh=(f,w)=>`<div class="${w?'wp':'pc'}"><div class="im" style="background:var(--shT)">${f[0]}<s style="color:var(--sh)">${f[3]}</s><s class="heart">♡</s></div><p>${f[1]}</p><b>Rs ${f[2]}</b><small>${f[4]} · ★ ${f[5]}</small></div>`;
+const veh=f=>`<div class="vc"><div class="im">${f[0]}</div><div class="t"><b>${f[1]}</b><br><small>${f[2]} · ${f[3]}</small><br><b style="color:var(--veh)">Rs ${f[4]}</b><button class="atc">Add to cart</button></div></div>`;
+const prop=f=>`<div class="pr"><div class="im">${f[0]}</div><div><b>${f[1]}</b><small style="display:block;color:var(--mut)">${f[2]}</small><b style="color:var(--prop)">Rs ${f[3]}</b><br><span class="pill" style="font-size:11px;padding:1px 8px">${f[4]}</span></div></div>`;
+H('#chips','<button class="chip on" data-j="top">For you</button>'+W.map(w=>`<button class="chip" data-j="s-${w.k}"><i style="background:${w.c}"></i>${w.n}</button>`).join(''));
+const door=w=>`<button class="door" data-j="s-${w.k}" style="background:${w.c}"><b>${w.n}</b><span>${w.d}</span><em>${w.s}</em><u>${w.e}</u></button>`;
+H('#doors',W.map(door).join(''));
+H('#r-flash',F.slice(0,4).map(f=>flash(f)).join(''));H('#r-sh',S.slice(0,4).map(f=>sh(f)).join(''));H('#r-veh',V.map(veh).join(''));H('#r-prop',P.slice(0,2).map(prop).join(''));
+const st=['Samsung','Daraz','Singer','Abans','Softlogic','Cargills','Odel'];
+const stH=st.map(s=>`<div><i>🏬</i>${s}</div>`).join('');H('#stores',stH);
+const pr=[['Super Mall','Up to 50% off','Top brands, official stores','linear-gradient(120deg,#2a1130,#e5383b)','🛍️'],['Second Hand','Thrift under Rs 2,000','Quality checked by MO','linear-gradient(120deg,#0b6b50,#12906a)','👗'],['Vehicles','Dash cams from Rs 6,500','Car and bike accessories','linear-gradient(120deg,#1a4aa0,#2563c9)','🏍️']];
+let pi=0;const rp=()=>{const p=pr[pi];H('#promo',`<small>${p[0]}</small><h3>${p[1]}</h3><p>${p[2]}</p><button>Shop now</button><u>${p[4]}</u><div class="dots">${pr.map((_,i)=>`<i class="${i==pi?'on':''}"></i>`).join('')}</div>`);$('#promo').style.background=p[3]};
+rp();setInterval(()=>{pi=(pi+1)%pr.length;rp()},3500);
+let t=8*3600+15*60+15;setInterval(()=>{t=t>0?t-1:0;const s=[t/3600|0,t/60%60|0,t%60].map(x=>String(x).padStart(2,'0')).join(':');$('#tm').textContent=s},1000);
+const scr=$('#scr');document.addEventListener('click',e=>{const b=e.target.closest('[data-j]');if(b){const id=b.dataset.j;scr.scrollTo({top:id=='top'?0:$('#'+id).offsetTop-70});document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.j==id))}
+});
+document.addEventListener('click',e=>{const a=e.target.closest('.atc');if(a){const on=a.classList.toggle('on');a.textContent=on?'✓ Added to cart':'Add to cart'}});
+</script></body></html>
